@@ -1,0 +1,12 @@
+#Composer
+vendor/
+/composer.lock
+
+#IDE
+*.swp
+.idea/
+
+#Build stuff
+build/cache
+*.phar
+infection.log

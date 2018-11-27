@@ -1,0 +1,5 @@
+*.php text eol=lf
+
+#Files we do not want to distribute
+/tests export-ignore
+/build

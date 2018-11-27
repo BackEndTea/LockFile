@@ -1,0 +1,57 @@
+<?php
+
+
+$finder = \PhpCsFixer\Finder::create()
+    ->in('src')
+    ->in('tests')
+;
+
+return \PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        '@PHP71Migration' => true,
+        '@PHP71Migration:risky' => true,
+        '@PHPUnit60Migration:risky' => true,
+        'blank_line_before_statement' => [
+            'statements' => [
+                'break',
+                'continue',
+                'declare',
+                'do',
+                'for',
+                'foreach',
+                'if',
+                'include',
+                'include_once',
+                'require',
+                'require_once',
+                'return',
+                'switch',
+                'throw',
+                'try',
+                'while',
+                'yield',
+            ],
+        ],
+        'native_function_invocation' => [
+            'include' => ['@compiler_optimized']
+        ],
+        'no_superfluous_phpdoc_tags' => true,
+        'no_useless_else'=> true,
+        'ordered_class_elements' => true,
+        'ordered_imports' => true,
+        'phpdoc_align' => false,
+        'phpdoc_summary' => false,
+        'php_unit_set_up_tear_down_visibility' => true,
+        'php_unit_strict' => true,
+        'php_unit_test_annotation' => [
+            'style' => 'prefix',
+            'case' => 'snake',
+        ],
+        'strict_comparison' => true,
+        'yoda_style' => false,
+    ])
+    ->setFinder($finder)
+;
