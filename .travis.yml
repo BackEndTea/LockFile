@@ -4,20 +4,20 @@ sudo: false
 php:
   - 7.1
   - 7.2
+  - 7.3
   - nightly
 
 cache:
   directories:
     - $HOME/.composer/cache
 
-before_script:
-  - if [[ $TRAVIS_PHP_VERSION = '7.1' ]]; then PHPUNIT_FLAGS="--coverage-clover ./clover.xml"; else PHPUNIT_FLAGS=""; fi
+install:
   - composer update
 
 script:
-  - make analyze-ci
+  - if [[ $TRAVIS_PHP_VERSION = '7.1' ]]; then make analyze-ci; fi
   - make test
-  - if php -i |grep -qE xdebug; then make infection; fi
+  - if php -m |grep -qE xdebug; then make infection; fi
 
 matrix:
   allow_failures:
