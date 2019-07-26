@@ -11,7 +11,7 @@ final class FileNotFoundException extends InvalidArgumentException implements Lo
     public static function fromFileName(string $filename): self
     {
         return new self(sprintf(
-            'Unable to find lockfile "%s"',
+            'Unable to find locked file "%s"',
             $filename
         ));
     }

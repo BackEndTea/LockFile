@@ -22,14 +22,17 @@ final class LockFileTest extends TestCase
     {
         $this->expectException(FileNotFoundException::class);
         $this->expectException(LockFileException::class);
+        $this->expectExceptionMessage('Unable to find locked file "foo/bar.lock"');
         LockFile::fromFile('foo/bar.lock');
     }
 
     public function test_it_throws_an_exception_if_the_file_contains_invalid_json(): void
     {
+        $invalidLockFile = __DIR__.'/Fixtures/invalid_composer.lock';
         $this->expectException(InvalidJsonException::class);
         $this->expectException(LockFileException::class);
-        LockFile::fromFile(__DIR__.'/Fixtures/invalid_composer.lock');
+        $this->expectExceptionMessage('File "'.$invalidLockFile.'" contains invalid JSON and could not be parsed');
+        LockFile::fromFile($invalidLockFile);
     }
 
     public function test_it_returns_an_instance_of_itself_when_provided_with_valid_json_file(): void

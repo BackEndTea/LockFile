@@ -59,11 +59,11 @@ final class LockFile
 
     public function hasProdPackage(string $package): bool
     {
-        return array_key_exists($package, $this->packages);
+        return \array_key_exists($package, $this->packages);
     }
 
     public function hasDevPackage(string $devPackage): bool
     {
-        return array_key_exists($devPackage, $this->devPackages);
+        return \array_key_exists($devPackage, $this->devPackages);
     }
 }
