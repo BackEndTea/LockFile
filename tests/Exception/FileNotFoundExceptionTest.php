@@ -24,7 +24,7 @@ final class FileNotFoundExceptionTest extends TestCase
     public function test_it_has_the_correct_error_message(): void
     {
         $filename = 'foo/bar.lock';
-        $message = 'Unable to find lockfile "foo/bar.lock"';
+        $message = 'Unable to find locked file "foo/bar.lock"';
 
         $exception = FileNotFoundException::fromFileName($filename);
         $this->assertSame($message, $exception->getMessage());
